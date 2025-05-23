@@ -1,11 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>100 homens vs 1 Gorila</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/script.js" defer></script>
 </head>
 <body>
-    
+    <div id="status">
+        <p>Vida do Gorila: <span id="vida-gorila">100</span></p>
+        <p>Humanos Vivos <span id="vida-humanos">100</span></p>
+    </div>
+    <div>
+        <button onclick="atacar()">Atacar</button>
+        <button onclick="defender()">Defender</button>
+        <button onclick="curar()">Curar</button>
+    </div>
+    <div id="campo">
+        <img src="" id="gorila">
+        <img src="" id="humanos">
+    </div>
+    <div id="log"></div>
 </body>
 </html>
