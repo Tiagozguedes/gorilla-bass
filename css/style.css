@@ -113,7 +113,7 @@ button:hover {
 }
 
 @keyframes ataque {
-    0% { transform: translateX(0); }
+    0% { transform: translateX(0); } /*funcao que moce um eleemnto horizontalmente*/
     50% { transform: translateX(30px); }
     100% { transform: translateX(0); }
 }
