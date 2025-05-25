@@ -6,21 +6,28 @@
     <title>100 homens vs 1 Gorila</title>
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/script.js" defer></script>
+
 </head>
+
 <body>
+
     <div id="status">
         <p>Vida do Gorila: <span id="vida-gorila">100</span></p>
-        <p>Humanos Vivos <span id="vida-humanos">100</span></p>
+        <p>Humanos vivos: <span id="vida-humanos">100</span></p>
     </div>
-    <div>
+
+    <div id="botoes">
         <button onclick="atacar()">Atacar</button>
         <button onclick="defender()">Defender</button>
         <button onclick="curar()">Curar</button>
     </div>
-    <div id="campo">
-        <img src="" id="gorila">
-        <img src="" id="humanos">
+
+    <div id="campo-de-batalha">
+        <img src="./assets/gorila.png" id="gorila">
+        <img src="./assets/humano.png" id="humanos">
     </div>
-    <div id="log"></div>
+    
+    <div id="menssagens"></div>
+
 </body>
 </html>

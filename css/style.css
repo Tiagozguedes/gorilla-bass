@@ -1,0 +1,51 @@
+dody{
+    background-color: #cfe9d3;
+    font-family: Arial;
+    background-color: #2c3e50;
+    color: white;
+}
+
+#status {
+    margin: 20px;
+    font-size: 10px;
+}
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer; /*altera o cursor do mouse*/
+}
+
+#campo-batalha{
+    margin: 30px auto;
+    width: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#gorila{
+    font-size: 80px
+}
+
+#humanos{
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+}
+
+.humano {
+    font-size:20px;
+    margin: 5px;
+}
+
+.humano.morto {
+    opacity: 0.3;
+}
+
+#mensagens {
+    margin: 20px;
+    padding:10px;
+    border:1px solid #ccc;
+    min-height: 100px; /*Define a altura minima de um elelmento.*/
+    text-align: center;
+}
