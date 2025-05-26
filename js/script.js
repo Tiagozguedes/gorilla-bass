@@ -82,3 +82,28 @@ function gorilaCurar() {
     adicionarMensagem(`Gorila se curou em ${cura} pontos de cura`);
     atualizaarinterface();
 }
+
+// Humanos atacam o gorila
+function humanosAtacar() {
+    if (humanosVivos <= 0 || vidaGorila <= 0) return;
+    
+    // Quantidade de humanos que atacam (1-5% dos humanos vivos)
+    const atacantes = Math.max(1, Math.floor(humanosVivos * 0.03));
+    let dano = atacantes;
+    
+    // Se gorila está defendendo, dano reduzido
+    if (gorilaDefendendo) {
+        dano = Math.floor(dano / 2);
+    }
+
+    vidaGorila -= dano;
+    adicionarMensagem(`${atacantes} humanos atacaram! Gorila perdeu ${dano} de vida.`);
+    
+    // Verifica derrota
+    if (vidaGorila <= 0) {
+        vidaGorila = 0;
+        adicionarMensagem('DERROTA! O gorila foi derrotado pelos humanos.');
+    }
+    
+    atualizarInterface();
+}
