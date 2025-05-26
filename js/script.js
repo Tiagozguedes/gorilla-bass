@@ -107,3 +107,22 @@ function humanosAtacar() {
     
     atualizarInterface();
 }
+
+// Atualiza a interface
+function atualizarInterface() {
+    vidaGorilaElement.textContent = vidaGorila;
+    humanosVivosElement.textContent = humanosVivos;
+}
+
+// Adiciona mensagem ao log
+function adicionarMensagem(texto) {
+    const mensagem = document.createElement('p');
+    mensagem.textContent = texto;
+    mensagensElement.appendChild(mensagem);
+    
+    // Rolagem automática
+    mensagensElement.scrollTop = mensagensElement.scrollHeight;
+}
+
+// Inicia o jogo quando a página carrega
+window.onload = iniciarJogo;
