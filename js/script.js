@@ -55,4 +55,30 @@ if (humanos <= 0) {
     adicionarMensagem('VITORIA! O Gorila derrotou todos os humanos!');
 }
 
-// Gorila se defende
+// Gorila se defendendo
+
+function gorilaDefendendo(){
+    gorilaDefendendo = true;
+    gorilaElement.style.color = 'lightblue';
+    adicionarMensagem('Gorila esta defendendo! Proximo ataque sera reduzido.');
+
+    // Defesa dura 3 segundos
+    setTimeout(() =>{
+        gorilaDefendendo = false;
+        gorilaElement.style.color = 'white';
+        adicionarMensagem('Gorila nao edsta mais defendendo.');
+    }, 3000);
+}
+
+// Gorila se cura
+function gorilaCurar() {
+    const cura = Math.floor(Math.random()* 15) + 5;
+    vidaGorila = Math.min(100, vidaGorila + cura);
+
+    //Animacao simples
+    gorilaElement.style.color = 'lightgreen'
+    setTimeout (() => gorilaElement.style.color = 'white', 500);
+
+    adicionarMensagem(`Gorila se curou em ${cura} pontos de cura`);
+    atualizaarinterface();
+}
