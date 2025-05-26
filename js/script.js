@@ -18,7 +18,13 @@ function criarHumanos(){
         humano.className = 'humano';
         humanosContainer.appendChild(humano);
     }
+
+    // Humanos atacam a cada 2 segundos
+    setInterval(humanosAtacar, 2000);
+    adicionarMensagem('O jogo começou! Gorila vs 100 Humanos!');
 }
+
+
 
 // Gorila ataca
 function atacar() {
@@ -36,5 +42,17 @@ function atacar() {
     const humanos  = document.querySelector('.humano:not(morto');
     for (let i = 0; i < eliminados; i++) {
         if (humanos[i]) humanos[i].classList.add('morto');
+        humanos.classList.add('morto');
+        humanosVivos--;
     }
 }
+
+adicionarMensagem(`Gorila atacou e eliminou ${humanosEliminados} humanos!`);
+atualizarInterface();
+
+// Verificar vitoria
+if (humanos <= 0) {
+    adicionarMensagem('VITORIA! O Gorila derrotou todos os humanos!');
+}
+
+// Gorila se defende
