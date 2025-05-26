@@ -1,86 +1,87 @@
 // Variáveis do jogo
 let vidaGorila = 100;
 let humanosVivos = 100;
-let defendendo = false;
+let gorilaDefendendo = false;
 
 // Elementos do DOM
 const gorilaElement = document.getElementById('gorila');
-const humanosContainer = document.getElementById('humanos-container');
+const humanosElement = document.getElementById('humanos');
 const vidaGorilaElement = document.getElementById('vida-gorila');
 const humanosVivosElement = document.getElementById('humanos-vivos');
-const logElement = document.getElementById('log');
+const mensagensElement = document.getElementById('mensagens');
 
-//Criar os humanos na tela
-function criarHumanos(){
-    for (let i = 0; i < 100; i++){
-        const humano = document.createElement(img);
-        humano.src = './assests/humano.png';
+// Inicia o jogo
+function iniciarJogo() {
+    // Cria os humanos (usando emojis como placeholder)
+    for (let i = 0; i < humanosVivos; i++) {
+        const humano = document.createElement('div');
         humano.className = 'humano';
-        humanosContainer.appendChild(humano);
+        humano.textContent = '🧑';
+        humano.id = 'humano-' + i;
+        humanosElement.appendChild(humano);
     }
-
+    
     // Humanos atacam a cada 2 segundos
     setInterval(humanosAtacar, 2000);
+    
     adicionarMensagem('O jogo começou! Gorila vs 100 Humanos!');
 }
 
-
-
 // Gorila ataca
-function atacar() {
-    if (humanosVivos<=0) return;
-
-    //Animacao simples
-    gorilaElement.style.transform = 'traslatex(20px)';
-    setTimeout(() =>gorilaElement.style.transform = '',300) // agrupa a execocao da funcao depois de um determinado tempo
+function gorilaAtacar() {
+    if (humanosVivos <= 0) return;
     
-    //Elimina 1-3 humanos
-    const eliminados = Math.min(Matdh.floor(Math.random() * 3) + 1, humanosVivos); //gera numero aleatorio entre 1-3 e o arredonda
-    humanos -= eliminados;
-
-    //Atualiza humanos na tela
-    const humanos  = document.querySelector('.humano:not(morto');
-    for (let i = 0; i < eliminados; i++) {
-        if (humanos[i]) humanos[i].classList.add('morto');
-        humanos.classList.add('morto');
-        humanosVivos--;
+    // Animação simples
+    gorilaElement.style.transform = 'translateX(20px)';
+    setTimeout(() => gorilaElement.style.transform = 'translateX(0)', 300);
+    
+    // Elimina entre 1-3 humanos
+    const humanosEliminados = Math.min(Math.floor(Math.random() * 3) + 1, humanosVivos);
+    
+    for (let i = 0; i < humanosEliminados; i++) {
+        const humanoId = Math.floor(Math.random() * 100);
+        const humano = document.getElementById('humano-' + humanoId);
+        
+        if (humano && !humano.classList.contains('morto')) {
+            humano.classList.add('morto');
+            humanosVivos--;
+        }
+    }
+    
+    adicionarMensagem(`Gorila atacou e eliminou ${humanosEliminados} humanos!`);
+    atualizarInterface();
+    
+    // Verifica vitória
+    if (humanosVivos <= 0) {
+        adicionarMensagem('VITÓRIA! O gorila derrotou todos os humanos!');
     }
 }
 
-adicionarMensagem(`Gorila atacou e eliminou ${humanosEliminados} humanos!`);
-atualizarInterface();
-
-// Verificar vitoria
-if (humanos <= 0) {
-    adicionarMensagem('VITORIA! O Gorila derrotou todos os humanos!');
-}
-
-// Gorila se defendendo
-
-function gorilaDefendendo(){
+// Gorila se defende
+function gorilaDefender() {
     gorilaDefendendo = true;
     gorilaElement.style.color = 'lightblue';
-    adicionarMensagem('Gorila esta defendendo! Proximo ataque sera reduzido.');
-
+    adicionarMensagem('Gorila está se defendendo! Próximo ataque será reduzido.');
+    
     // Defesa dura 3 segundos
-    setTimeout(() =>{
+    setTimeout(() => {
         gorilaDefendendo = false;
         gorilaElement.style.color = 'white';
-        adicionarMensagem('Gorila nao edsta mais defendendo.');
+        adicionarMensagem('Gorila não está mais defendendo.');
     }, 3000);
 }
 
 // Gorila se cura
 function gorilaCurar() {
-    const cura = Math.floor(Math.random()* 15) + 5;
+    const cura = Math.floor(Math.random() * 15) + 5;
     vidaGorila = Math.min(100, vidaGorila + cura);
-
-    //Animacao simples
-    gorilaElement.style.color = 'lightgreen'
-    setTimeout (() => gorilaElement.style.color = 'white', 500);
-
-    adicionarMensagem(`Gorila se curou em ${cura} pontos de cura`);
-    atualizaarinterface();
+    
+    // Animação simples
+    gorilaElement.style.color = 'lightgreen';
+    setTimeout(() => gorilaElement.style.color = 'white', 500);
+    
+    adicionarMensagem(`Gorila se curou em ${cura} pontos de vida!`);
+    atualizarInterface();
 }
 
 // Humanos atacam o gorila
@@ -95,7 +96,7 @@ function humanosAtacar() {
     if (gorilaDefendendo) {
         dano = Math.floor(dano / 2);
     }
-
+    
     vidaGorila -= dano;
     adicionarMensagem(`${atacantes} humanos atacaram! Gorila perdeu ${dano} de vida.`);
     

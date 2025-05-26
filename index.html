@@ -3,37 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>100 homens vs 1 Gorila</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <script src="./js/script.js" defer></script>
+    <title>Gorila vs Humanos</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
 </head>
-
 <body>
-    <h1>100 Humanos vs 1 Gorila</h1>
+    <h1>Gorila vs 100 Humanos</h1>
     
     <div id="status">
-        <p>Vida do Gorila: <span id="vida-gorila">100</span>%</p>
+        <p>Vida do Gorila: <span id="vida-gorila">100</span></p>
         <p>Humanos vivos: <span id="humanos-vivos">100</span></p>
     </div>
-
+    
     <div id="botoes">
-        <button onclick="atacar()">Atacar (A)</button>
-        <button onclick="defender()">Defender (D)</button>
-        <button onclick="curar()">Curar (C)</button>
-    </div>
-
-    <div id="campo-de-batalha">
-        <div id="gorila-container">
-            <img src="./assets/gorila.png" id="gorila">
-        </div>
-        <div id="humanos-container">
-            <!-- Humanos serão adicionados pelo JavaScript -->
-        </div>
+        <button onclick="gorilaAtacar()">Atacar</button>
+        <button onclick="gorilaDefender()">Defender</button>
+        <button onclick="gorilaCurar()">Curar</button>
     </div>
     
-    <div id="mensagens">
-        <h3>Registro da Batalha:</h3>
-        <div id="log"></div>
+    <div id="campo-batalha">
+        <div id="gorila">🦍</div>
+        <div id="humanos"></div>
     </div>
+    
+    <div id="mensagens"></div>
+    
 </body>
 </html>
